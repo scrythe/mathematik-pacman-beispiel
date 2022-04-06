@@ -51,25 +51,32 @@
   constructor() {}
 } */
 
-const maxPostion = {
+interface Postion {
+  x: number;
+  y: number;
+}
+
+const maxPostion: Postion = {
   x: 5,
   y: 5,
 };
 
-const startPosition = {
+const startPosition: Postion = {
   x: 3,
   y: 0,
 };
 
-const endPosition = {
+const endPosition: Postion = {
   x: 3,
   y: 5,
 };
 
-const currentPosition = {
+const currentPosition: Postion = {
   x: 3,
   y: 0,
 };
+
+const alreadyVisited: Postion[] = [];
 
 function goRight() {
   currentPosition.x += 1;
@@ -107,24 +114,50 @@ function checkIfPossibleToMoveAbove() {
   return currentPosition.x + 1 <= maxPostion.x;
 }
 
+function addVisitedLocation() {
+  alreadyVisited.push(currentPosition);
+}
+
 function* moveToNextPostionGenerator() {
-  if (!checkIfPossibleToMoveRight()) yield false;
-  goRight();
-  yield true;
-  if (checkIfPossibleToMoveLeft()) yield false;
-  goLeft();
-  yield true;
-  if (checkIfPossibleToMoveAbove()) yield false;
-  goAbove();
-  yield true;
+  if (checkIfPossibleToMoveRight()) {
+    addVisitedLocation();
+    goRight();
+    yield true;
+  } else {
+    yield false;
+  }
+  if (checkIfPossibleToMoveLeft()) {
+    goLeft();
+    yield true;
+  } else {
+    yield false;
+  }
+  if (checkIfPossibleToMoveAbove()) {
+    goAbove();
+    yield true;
+  } else {
+    yield false;
+  }
 }
 
 function moveToNextPosition() {
   for (const move of moveToNextPostionGenerator()) {
     if (checkIfAtEndPosition()) return;
-    if (!move) continue;
-    moveToNextPosition();
+    if (move) {
+      moveToNextPosition();
+    } else {
+      continue;
+    }
   }
 }
 
 moveToNextPosition();
+
+module.exports = {
+  currentPosition,
+  goRight,
+  goLeft,
+  goAbove,
+  checkIfPossibleToMoveRight,
+  checkIfPossibleToMoveLeft,
+};

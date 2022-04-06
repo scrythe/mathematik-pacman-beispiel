@@ -3,10 +3,17 @@
   "version": "1.0.0",
   "description": "calculate all possibilities to get to destination pacman maximatik",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "node dist/index.js",
     "build": "tsc",
-    "watch": "tsc --watch"
+    "watch": "tsc --watch",
+    "test": "jest --watchAll --verbose"
+  },
+  "jest": {
+    "extensionsToTreatAsEsm": [
+      ".ts"
+    ]
   },
   "keywords": [
     "calculate",
@@ -18,6 +25,8 @@
   "author": "scrythe",
   "license": "MIT",
   "devDependencies": {
+    "@types/jest": "^27.4.1",
+    "jest": "^27.5.1",
     "typescript": "^4.6.3"
   }
 }
