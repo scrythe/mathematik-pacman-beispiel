@@ -1,0 +1,23 @@
+{
+  "name": "mathematik-pacmac-beispiel",
+  "version": "1.0.0",
+  "description": "calculate all possibilities to get to destination pacman maximatik",
+  "main": "index.js",
+  "scripts": {
+    "start": "node dist/index.js",
+    "build": "tsc",
+    "watch": "tsc --watch"
+  },
+  "keywords": [
+    "calculate",
+    "all",
+    "possibilities",
+    "pacmac",
+    "maximatik"
+  ],
+  "author": "scrythe",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.6.3"
+  }
+}
