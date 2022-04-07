@@ -117,6 +117,7 @@ function* moveNextPositionGen(
 function moveNextPosition(
   currentPosition: Point,
   maxPoint: Point,
+  endPoint: Point,
   visitedLocations: readonly Point[]
 ): void {
   for (const move of moveNextPositionGen(
@@ -125,9 +126,10 @@ function moveNextPosition(
     visitedLocations
   )) {
     if (!move) continue;
+    if (checkIfLocationSame(move, endPoint)) continue;
     currentPosition = move;
     const locations = addVisitedLocation(currentPosition, visitedLocations);
-    moveNextPosition(currentPosition, maxPoint, locations);
+    moveNextPosition(currentPosition, maxPoint, endPoint, locations);
   }
 }
 
@@ -154,7 +156,7 @@ function startProgramm() {
 
   const visitedLocations: readonly Point[] = Object.freeze([currentPosition]);
 
-  moveNextPosition(currentPosition, maxPoint, visitedLocations);
+  moveNextPosition(currentPosition, maxPoint, endPoint, visitedLocations);
 }
 
 startProgramm();
