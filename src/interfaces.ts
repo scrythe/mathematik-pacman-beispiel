@@ -15,3 +15,5 @@ export interface ResultObject {
   numberOfMethods: number;
   allPathsToEnd: Array<Point[]>;
 }
+
+export type XandYAchses = [number, number, number, number, number];

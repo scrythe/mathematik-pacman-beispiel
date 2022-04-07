@@ -32,6 +32,8 @@ function startProgramm(): void {
     resultObject
   );
   console.log(numberOfMethods);
+  const firstPathToEnd = JSON.stringify(allPathsToEnd[0]);
+  console.log(firstPathToEnd);
   // const allPathsToEndJSON = JSON.stringify(allPathsToEnd);
   // console.log(allPathsToEndJSON);
 }
