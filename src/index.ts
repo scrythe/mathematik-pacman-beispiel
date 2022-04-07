@@ -1,143 +1,168 @@
-/* class FindEveryWay {
-  maxPostion = {
-    x: 5,
-    y: 5,
-  };
-  startPosition = {
-    x: 3,
-    y: 0,
-  };
-  endPosition = {
-    x: 3,
-    y: 5,
-  };
-  currentPosition = {
-    x: 3,
-    y: 0,
-  };
-  goRight() {
-    return (this.currentPosition.x += 1);
-  }
-  goLeft() {
-    return (this.currentPosition.x -= 1);
-  }
-  goAbove() {
-    return (this.currentPosition.y += 1);
-  }
-  checkIfAtStart() {
-    const checkX = this.currentPosition.x == this.startPosition.x;
-    const checkY = this.currentPosition.y == this.startPosition.y;
-    return checkX && checkY;
-  }
-  checkIfAtEnd() {
-    const checkX = this.currentPosition.x == this.endPosition.x;
-    const checkY = this.currentPosition.y == this.endPosition.y;
-    return checkX && checkY;
-  }
-  checkIfPossibleToMoveRight() {
-    return this.currentPosition.x + 1 <= this.maxPostion.x;
-  }
-  checkIfPossibleToMoveLeft() {
-    return this.currentPosition.x - 1 >= 0;
-  }
-  checkIfPossibleToMoveAbove() {
-    return this.currentPosition.x + 1 <= this.maxPostion.x;
-  }
-  checkIfPossibleToMove() {
-    const checkIfAtStart = this.checkIfAtStart();
-    const checkIfAtEnd = this.checkIfAtEnd();
-  }
-  moveOptions = [this.goRight, this.goLeft, this.goAbove];
-  constructor() {}
-} */
-
-interface Postion {
+interface Position {
   x: number;
   y: number;
 }
 
-const maxPostion: Postion = {
+const maxPostion: Position = {
   x: 5,
   y: 5,
 };
 
-const startPosition: Postion = {
+const startPosition: Position = {
   x: 3,
   y: 0,
 };
 
-const endPosition: Postion = {
+const endPosition: Position = {
   x: 3,
   y: 5,
 };
 
-const currentPosition: Postion = {
+const currentPosition: Position = {
   x: 3,
   y: 0,
 };
 
-const alreadyVisited: Postion[] = [];
+const alreadyVisited: Position[] = [];
+alreadyVisited.push(startPosition);
 
-function goRight() {
+function goRight(): void {
   currentPosition.x += 1;
 }
 
-function goLeft() {
+function goLeft(): void {
   currentPosition.x -= 1;
 }
 
-function goAbove() {
+function goAbove(): void {
   currentPosition.y += 1;
 }
 
-function checkIfAtStartPosition() {
+function checkIfAtStartPosition(): boolean {
   const checkX = currentPosition.x == startPosition.x;
   const checkY = currentPosition.y == startPosition.y;
   return checkX && checkY;
 }
 
-function checkIfAtEndPosition() {
+function checkIfAtEndPosition(): boolean {
   const checkX = currentPosition.x == endPosition.x;
   const checkY = currentPosition.y == endPosition.y;
   return checkX && checkY;
 }
 
-function checkIfPossibleToMoveRight() {
+function checkIfPossibleToMoveRight(): boolean {
   return currentPosition.x + 1 <= maxPostion.x;
 }
 
-function checkIfPossibleToMoveLeft() {
+function checkIfPossibleToMoveLeft(): boolean {
   return currentPosition.x - 1 >= 0;
 }
 
-function checkIfPossibleToMoveAbove() {
-  return currentPosition.x + 1 <= maxPostion.x;
+function checkIfPossibleToMoveAbove(): boolean {
+  return currentPosition.y + 1 <= maxPostion.x;
 }
 
-function addVisitedLocation() {
-  alreadyVisited.push(currentPosition);
+/* function checkIfMoveable(positionToGo: Position) {
+  const moveableToDirection =
+    checkIfPossibleToMoveRight() &&
+    checkIfPossibleToMoveLeft() &&
+    checkIfPossibleToMoveAbove();
+  const moveableToPoints = checkIfLocationVisited(positionToGo);
+  return moveableToDirection && moveableToPoints;
+}
+ */
+
+function checkIfMoveable() {
+  const moveableToRightObject = {
+    x: currentPosition.x + 1,
+    y: currentPosition.y,
+  };
+  const moveableToLeftObject = {
+    x: currentPosition.x - 1,
+    y: currentPosition.y,
+  };
+  const moveableToAboveObject = {
+    x: currentPosition.x,
+    y: currentPosition.y + 1,
+  };
+  const moveableToRight =
+    checkIfPossibleToMoveRight() &&
+    checkIfLocationVisited(moveableToRightObject);
+  const moveableToLeft =
+    checkIfPossibleToMoveLeft() && checkIfLocationVisited(moveableToLeftObject);
+  const moveableToAbove =
+    checkIfPossibleToMoveAbove() &&
+    checkIfLocationVisited(moveableToAboveObject);
+  return moveableToRight && moveableToLeft && moveableToAbove;
 }
 
-function* moveToNextPostionGenerator() {
-  if (checkIfPossibleToMoveRight()) {
+function addVisitedLocation(): void {
+  alreadyVisited.push({ ...currentPosition });
+}
+
+function checkIfLocationVisited(positionToGo: Position): boolean {
+  const visitedLocations = alreadyVisited.map((location) => {
+    const checkX = positionToGo.x == location.x;
+    const checkY = positionToGo.y == location.y;
+    return checkX && checkY;
+  });
+  for (let index = 0; index < visitedLocations.length; index++) {
+    const location = visitedLocations[index];
+    if (location) return true;
+  }
+  return false;
+}
+
+function movePacman(direction: string): boolean {
+  let moved = false;
+  switch (direction) {
+    case 'right':
+      if (checkIfPossibleToMoveRight()) {
+        const visitingLocation: Position = {
+          x: currentPosition.x + 1,
+          y: currentPosition.y,
+        };
+        if (!checkIfLocationVisited(visitingLocation)) {
+          goRight();
+          moved = true;
+        }
+      }
+      break;
+    case 'left':
+      if (checkIfPossibleToMoveLeft()) {
+        const visitingLocation: Position = {
+          x: currentPosition.x - 1,
+          y: currentPosition.y,
+        };
+        if (!checkIfLocationVisited(visitingLocation)) {
+          goLeft();
+          moved = true;
+        }
+      }
+      break;
+    case 'above':
+      if (checkIfPossibleToMoveAbove()) {
+        const visitingLocation: Position = {
+          x: currentPosition.x,
+          y: currentPosition.y + 1,
+        };
+        if (!checkIfLocationVisited(visitingLocation)) {
+          goAbove();
+          moved = true;
+        }
+      }
+      break;
+  }
+  if (moved) {
     addVisitedLocation();
-    goRight();
-    yield true;
-  } else {
-    yield false;
   }
-  if (checkIfPossibleToMoveLeft()) {
-    goLeft();
-    yield true;
-  } else {
-    yield false;
-  }
-  if (checkIfPossibleToMoveAbove()) {
-    goAbove();
-    yield true;
-  } else {
-    yield false;
-  }
+  return moved;
+}
+
+function* moveToNextPostionGenerator(): Generator<boolean> {
+  yield movePacman('right');
+  yield movePacman('left');
+  yield movePacman('above');
 }
 
 function moveToNextPosition() {
@@ -146,18 +171,9 @@ function moveToNextPosition() {
     if (move) {
       moveToNextPosition();
     } else {
-      continue;
+      if (checkIfMoveable()) return;
     }
   }
 }
 
 moveToNextPosition();
-
-module.exports = {
-  currentPosition,
-  goRight,
-  goLeft,
-  goAbove,
-  checkIfPossibleToMoveRight,
-  checkIfPossibleToMoveLeft,
-};
