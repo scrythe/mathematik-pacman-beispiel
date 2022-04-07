@@ -73,7 +73,7 @@ export function moveNextPosition(
     if (!move) continue;
     if (checkIfLocationSame(move, endPoint)) {
       resultObject.numberOfMethods += 1;
-      const [...pathToEnd] = visitedLocations;
+      const pathToEnd = addVisitedLocation(move, visitedLocations);
       resultObject.allPathsToEnd.push(pathToEnd);
       return resultObject;
     }
