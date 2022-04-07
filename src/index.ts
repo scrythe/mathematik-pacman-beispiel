@@ -3,18 +3,18 @@ import { moveNextPosition } from './path-functions.js';
 
 function startProgramm(): void {
   const maxPoint: Point = Object.freeze({
-    x: 5,
-    y: 5,
+    x: 4,
+    y: 4,
   });
 
   const startPoint: Point = Object.freeze({
-    x: 3,
+    x: 2,
     y: 0,
   });
 
   const endPoint: Point = Object.freeze({
-    x: 3,
-    y: 5,
+    x: 2,
+    y: 4,
   });
 
   const currentPosition = Object.freeze({ ...startPoint });
@@ -32,8 +32,8 @@ function startProgramm(): void {
     resultObject
   );
   console.log(numberOfMethods);
-  const allPathsToEndJSON = JSON.stringify(allPathsToEnd);
-  console.log(allPathsToEndJSON);
+  // const allPathsToEndJSON = JSON.stringify(allPathsToEnd);
+  // console.log(allPathsToEndJSON);
 }
 
 startProgramm();
