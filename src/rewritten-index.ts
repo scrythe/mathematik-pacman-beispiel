@@ -118,19 +118,27 @@ function moveNextPosition(
   currentPosition: Point,
   maxPoint: Point,
   endPoint: Point,
-  visitedLocations: readonly Point[]
-): void {
+  visitedLocations: readonly Point[],
+  numberOfMethods: number
+): number {
   for (const move of moveNextPositionGen(
     currentPosition,
     maxPoint,
     visitedLocations
   )) {
     if (!move) continue;
-    if (checkIfLocationSame(move, endPoint)) continue;
+    if (checkIfLocationSame(move, endPoint)) return (numberOfMethods += 1);
     currentPosition = move;
     const locations = addVisitedLocation(currentPosition, visitedLocations);
-    moveNextPosition(currentPosition, maxPoint, endPoint, locations);
+    numberOfMethods = moveNextPosition(
+      currentPosition,
+      maxPoint,
+      endPoint,
+      locations,
+      numberOfMethods
+    );
   }
+  return numberOfMethods;
 }
 
 function startProgramm() {
@@ -149,14 +157,18 @@ function startProgramm() {
     y: 5,
   });
 
-  const currentPosition: Point = Object.freeze({
-    x: 3,
-    y: 0,
-  });
+  const currentPosition = Object.freeze({ ...startPoint });
 
-  const visitedLocations: readonly Point[] = Object.freeze([currentPosition]);
-
-  moveNextPosition(currentPosition, maxPoint, endPoint, visitedLocations);
+  const visitedLocations: readonly Point[] = Object.freeze([startPoint]);
+  let numberOfMethods = 0;
+  numberOfMethods = moveNextPosition(
+    currentPosition,
+    maxPoint,
+    endPoint,
+    visitedLocations,
+    numberOfMethods
+  );
+  console.log(numberOfMethods);
 }
 
 startProgramm();
