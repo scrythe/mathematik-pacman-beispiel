@@ -1,5 +1,6 @@
 import { Point, ResultObject } from './interfaces.js';
 import { moveNextPosition } from './path-functions.js';
+import { multipleTwoDArrays } from './functions/create-2d-array.js';
 
 function startProgramm(): void {
   const maxPoint: Point = Object.freeze({
@@ -32,10 +33,9 @@ function startProgramm(): void {
     resultObject
   );
   console.log(numberOfMethods);
-  const firstPathToEnd = JSON.stringify(allPathsToEnd[0]);
-  console.log(firstPathToEnd);
-  // const allPathsToEndJSON = JSON.stringify(allPathsToEnd);
-  // console.log(allPathsToEndJSON);
+  const AllVisualPathsToEnd = multipleTwoDArrays(allPathsToEnd);
+  const AllVisualPathsToEndJSON = JSON.stringify(AllVisualPathsToEnd); // going to do it with svg later instead
+  console.log(AllVisualPathsToEndJSON);
 }
 
 startProgramm();
