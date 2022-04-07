@@ -7,6 +7,10 @@ interface MoveFunc {
   (currentPosition: Point): Point;
 }
 
+interface CheckFunc {
+  (currentPosition: Point, maxPoint: Point): boolean;
+}
+
 function moveRight(currentPosition: Point): Point {
   const { ...object } = currentPosition;
   object.x += 1;
@@ -60,62 +64,54 @@ function checkVisitedLocation(
   positionToGo: Point,
   visitedLocations: readonly Point[]
 ): boolean {
-  const visitedAnyLocation = visitedLocations.every((location) => {
-    checkIfLocationSame(positionToGo, location);
+  const visitedAnyLocation = !visitedLocations.every((location) => {
+    return !checkIfLocationSame(positionToGo, location);
   });
   return visitedAnyLocation;
 }
 
-/* function checkAndMoveNextPosition(
+function checkAndMoveNextPosition(
+  checkFunc: CheckFunc,
   moveFunc: MoveFunc,
   currentPosition: Point,
+  maxPoint: Point,
   visitedLocations: readonly Point[]
-) {
+): false | Point {
+  if (!checkFunc(currentPosition, maxPoint)) return false;
   const positionToGo = moveFunc(currentPosition);
-  if (!checkVisitedLocation(positionToGo, visitedLocations)) {
-    const { ...currentPosition } = positionToGo;
-    return currentPosition;
-  }
-} */
+  if (checkVisitedLocation(positionToGo, visitedLocations)) return false;
+  return positionToGo;
+}
 
 function* moveNextPositionGen(
   currentPosition: Point,
   maxPoint: Point,
   visitedLocations: readonly Point[]
-): Generator<boolean> {
-  if (checkMoveRight(currentPosition, maxPoint)) {
-    const positionToGo = moveRight(currentPosition);
-    if (!checkVisitedLocation(positionToGo, visitedLocations)) {
-      currentPosition = moveRight(currentPosition);
-      yield true;
-    } else {
-      yield false;
-    }
-  } else {
-    yield false;
-  }
-  if (checkMoveLeft(currentPosition)) {
-    const positionToGo = moveLeft(currentPosition);
-    if (!checkVisitedLocation(positionToGo, visitedLocations)) {
-      currentPosition = moveLeft(currentPosition);
-      yield true;
-    } else {
-      yield false;
-    }
-  } else {
-    yield false;
-  }
-  if (checkMoveAbove(currentPosition, maxPoint)) {
-    const positionToGo = moveAbove(currentPosition);
-    if (!checkVisitedLocation(positionToGo, visitedLocations)) {
-      currentPosition = moveAbove(currentPosition);
-      yield true;
-    } else {
-      yield false;
-    }
-  } else {
-    yield false;
-  }
+): Generator<false | Point> {
+  // Right
+  yield checkAndMoveNextPosition(
+    checkMoveRight,
+    moveRight,
+    currentPosition,
+    maxPoint,
+    visitedLocations
+  );
+  // Left
+  yield checkAndMoveNextPosition(
+    checkMoveLeft,
+    moveLeft,
+    currentPosition,
+    maxPoint,
+    visitedLocations
+  );
+  // Above
+  yield checkAndMoveNextPosition(
+    checkMoveAbove,
+    moveAbove,
+    currentPosition,
+    maxPoint,
+    visitedLocations
+  );
 }
 
 function moveNextPosition(
@@ -128,16 +124,12 @@ function moveNextPosition(
     maxPoint,
     visitedLocations
   )) {
-    if (move) {
-      const locations = addVisitedLocation(currentPosition, visitedLocations);
-      moveNextPosition(currentPosition, maxPoint, locations);
-    } else {
-      continue;
-    }
+    if (!move) continue;
+    currentPosition = move;
+    const locations = addVisitedLocation(currentPosition, visitedLocations);
+    moveNextPosition(currentPosition, maxPoint, locations);
   }
 }
-
-() => {};
 
 function startProgramm() {
   const maxPoint: Point = Object.freeze({
