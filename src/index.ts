@@ -11,6 +11,11 @@ interface CheckFunc {
   (currentPosition: Point, maxPoint: Point): boolean;
 }
 
+interface ResultObject {
+  numberOfMethods: number;
+  allPathsToEnd: Array<Point[]>;
+}
+
 function moveRight(currentPosition: Point): Point {
   const { ...object } = currentPosition;
   object.x += 1;
@@ -119,26 +124,31 @@ function moveNextPosition(
   maxPoint: Point,
   endPoint: Point,
   visitedLocations: readonly Point[],
-  numberOfMethods: number
-): number {
+  { ...resultObject }: ResultObject
+): ResultObject {
   for (const move of moveNextPositionGen(
     currentPosition,
     maxPoint,
     visitedLocations
   )) {
     if (!move) continue;
-    if (checkIfLocationSame(move, endPoint)) return (numberOfMethods += 1);
+    if (checkIfLocationSame(move, endPoint)) {
+      resultObject.numberOfMethods += 1;
+      const [...pathToEnd] = visitedLocations;
+      resultObject.allPathsToEnd.push(pathToEnd);
+      return resultObject;
+    }
     currentPosition = move;
     const locations = addVisitedLocation(currentPosition, visitedLocations);
-    numberOfMethods = moveNextPosition(
+    resultObject = moveNextPosition(
       currentPosition,
       maxPoint,
       endPoint,
       locations,
-      numberOfMethods
+      resultObject
     );
   }
-  return numberOfMethods;
+  return resultObject;
 }
 
 function startProgramm() {
@@ -160,15 +170,20 @@ function startProgramm() {
   const currentPosition = Object.freeze({ ...startPoint });
 
   const visitedLocations: readonly Point[] = Object.freeze([startPoint]);
-  let numberOfMethods = 0;
-  numberOfMethods = moveNextPosition(
+  let resultObject: ResultObject = {
+    numberOfMethods: 0,
+    allPathsToEnd: [],
+  };
+  const { numberOfMethods, allPathsToEnd } = moveNextPosition(
     currentPosition,
     maxPoint,
     endPoint,
     visitedLocations,
-    numberOfMethods
+    resultObject
   );
   console.log(numberOfMethods);
+  const allPathsToEndJSON = JSON.stringify(allPathsToEnd);
+  console.log(allPathsToEndJSON);
 }
 
 startProgramm();
