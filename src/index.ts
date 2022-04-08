@@ -1,6 +1,7 @@
 import { Point, ResultObject } from './interfaces.js';
 import { moveNextPosition } from './path-functions.js';
 import { multipleTwoDArrays } from './functions/create-2d-array.js';
+import { writeFile } from './functions/read-file-and-write.js';
 
 function startProgramm(): void {
   const maxPoint: Point = Object.freeze({
@@ -33,11 +34,11 @@ function startProgramm(): void {
     resultObject
   );
   console.log(numberOfMethods);
-  const AllVisualPathsToEnd = multipleTwoDArrays(allPathsToEnd);
-  const AllVisualPathsToEndJSON = JSON.stringify(AllVisualPathsToEnd); // going to do it with svg later instead
-  console.log(AllVisualPathsToEndJSON);
+  const allVisualPathsToEndAsSvg = multipleTwoDArrays(allPathsToEnd);
+  writeFile('svgs.html', allVisualPathsToEndAsSvg);
 }
 
 startProgramm();
+
 // janidator69;
 // dggggsss;

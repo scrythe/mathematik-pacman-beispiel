@@ -1,52 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg xmlns="http://www.w3.org/2000/svg" width="280" height="280">
-   <rect x="0" y="0" width="280" height="280" fill="#e8e8e8"></rect>
-   <rect x="5" y="5" width="50" height="50" fill="black"></rect>
-   <rect class="x0y4" x="6" y="6" width="48" height="48" fill="#f8961e"></rect>
-   <rect x="60" y="5" width="50" height="50" fill="black"></rect>
-   <rect class="x1y4" x="61" y="6" width="48" height="48" fill="#f9844a"></rect>
-   <rect x="115" y="5" width="50" height="50" fill="black"></rect>
-   <rect class="x2y4" x="116" y="6" width="48" height="48" fill="#f9c74f"></rect>
-   <rect x="170" y="5" width="50" height="50" fill="black"></rect>
-   <rect class="x3y4" x="171" y="6" width="48" height="48" fill="white"></rect>
-   <rect x="225" y="5" width="50" height="50" fill="black"></rect>
-   <rect class="x4y4" x="226" y="6" width="48" height="48" fill="white"></rect>
-   <rect x="5" y="60" width="50" height="50" fill="black"></rect>
-   <rect class="x0y3" x="6" y="61" width="48" height="48" fill="#f3722c"></rect>
-   <rect x="60" y="60" width="50" height="50" fill="black"></rect>
-   <rect class="x1y3" x="61" y="61" width="48" height="48" fill="#f94144"></rect>
-   <rect x="115" y="60" width="50" height="50" fill="black"></rect>
-   <rect class="x2y3" x="116" y="61" width="48" height="48" fill="#e5383b"></rect>
-   <rect x="170" y="60" width="50" height="50" fill="black"></rect>
-   <rect class="x3y3" x="171" y="61" width="48" height="48" fill="#ba181b"></rect>
-   <rect x="225" y="60" width="50" height="50" fill="black"></rect>
-   <rect class="x4y3" x="226" y="61" width="48" height="48" fill="#a4161a"></rect>
-   <rect x="5" y="115" width="50" height="50" fill="black"></rect>
-   <rect class="x0y2" x="6" y="116" width="48" height="48" fill="#1e6091"></rect>
-   <rect x="60" y="115" width="50" height="50" fill="black"></rect>
-   <rect class="x1y2" x="61" y="116" width="48" height="48" fill="#184e77"></rect>
-   <rect x="115" y="115" width="50" height="50" fill="black"></rect>
-   <rect class="x2y2" x="116" y="116" width="48" height="48" fill="#0b090a"></rect>
-   <rect x="170" y="115" width="50" height="50" fill="black"></rect>
-   <rect class="x3y2" x="171" y="116" width="48" height="48" fill="#161a1d"></rect>
-   <rect x="225" y="115" width="50" height="50" fill="black"></rect>
-   <rect class="x4y2" x="226" y="116" width="48" height="48" fill="#660708"></rect>
-   <rect x="5" y="170" width="50" height="50" fill="black"></rect>
-   <rect class="x0y1" x="6" y="171" width="48" height="48" fill="#1a759f"></rect>
-   <rect x="60" y="170" width="50" height="50" fill="black"></rect>
-   <rect class="x1y1" x="61" y="171" width="48" height="48" fill="#168aad"></rect>
-   <rect x="115" y="170" width="50" height="50" fill="black"></rect>
-   <rect class="x2y1" x="116" y="171" width="48" height="48" fill="#34a0a4"></rect>
-   <rect x="170" y="170" width="50" height="50" fill="black"></rect>
-   <rect class="x3y1" x="171" y="171" width="48" height="48" fill="#52b69a"></rect>
-   <rect x="225" y="170" width="50" height="50" fill="black"></rect>
-   <rect class="x4y1" x="226" y="171" width="48" height="48" fill="#76c893"></rect>
-   <rect x="5" y="225" width="50" height="50" fill="black"></rect>
-   <rect class="x0y0" x="6" y="226" width="48" height="48" fill="white"></rect>
-   <rect x="60" y="225" width="50" height="50" fill="black"></rect>
-   <rect class="x1y0" x="61" y="226" width="48" height="48" fill="white"></rect>
-   <rect x="115" y="225" width="50" height="50" fill="black"></rect>
-   <rect class="x2y0" x="116" y="226" width="48" height="48" fill="#d9ed92"></rect>
-   <rect x="170" y="225" width="50" height="50" fill="black"></rect>
-   <rect class="x3y0" x="171" y="226" width="48" height="48" fill="#b5e48c"></rect>
-   <rect x="225" y="225" width="50" height="50" fill="black"></rect>
-   <rect cla
+   <rect  x="0" y="0" width="280" height="280" fill="#e8e8e8"/>
+   <rect x="5" y="5" width="50" height="50" fill="black"/>
+   <rect class="x0y4" x="6" y="6" width="48" height="48" fill="white"/>
+   <rect x="60" y="5" width="50" height="50" fill="black"/>
+   <rect class="x1y4" x="61" y="6" width="48" height="48" fill="white"/>
+   <rect x="115" y="5" width="50" height="50" fill="black"/>
+   <rect class="x2y4" x="116" y="6" width="48" height="48" fill="white"/>
+   <rect x="170" y="5" width="50" height="50" fill="black"/>
+   <rect class="x3y4" x="171" y="6" width="48" height="48" fill="white"/>
+   <rect x="225" y="5" width="50" height="50" fill="black"/>
+   <rect class="x4y4" x="226" y="6" width="48" height="48" fill="white"/>
+   <rect x="5" y="60" width="50" height="50" fill="black"/>
+   <rect class="x0y3" x="6" y="61" width="48" height="48" fill="white"/>
+   <rect x="60" y="60" width="50" height="50" fill="black"/>
+   <rect class="x1y3" x="61" y="61" width="48" height="48" fill="white"/>
+   <rect x="115" y="60" width="50" height="50" fill="black"/>
+   <rect class="x2y3" x="116" y="61" width="48" height="48" fill="white"/>
+   <rect x="170" y="60" width="50" height="50" fill="black"/>
+   <rect class="x3y3" x="171" y="61" width="48" height="48" fill="white"/>
+   <rect x="225" y="60" width="50" height="50" fill="black"/>
+   <rect class="x4y3" x="226" y="61" width="48" height="48" fill="white"/>
+   <rect x="5" y="115" width="50" height="50" fill="black"/>
+   <rect class="x0y2" x="6" y="116" width="48" height="48" fill="white"/>
+   <rect x="60" y="115" width="50" height="50" fill="black"/>
+   <rect class="x1y2" x="61" y="116" width="48" height="48" fill="white"/>
+   <rect x="115" y="115" width="50" height="50" fill="black"/>
+   <rect class="x2y2" x="116" y="116" width="48" height="48" fill="white"/>
+   <rect x="170" y="115" width="50" height="50" fill="black"/>
+   <rect class="x3y2" x="171" y="116" width="48" height="48" fill="white"/>
+   <rect x="225" y="115" width="50" height="50" fill="black"/>
+   <rect class="x4y2" x="226" y="116" width="48" height="48" fill="white"/>
+   <rect x="5" y="170" width="50" height="50" fill="black"/>
+   <rect class="x0y1" x="6" y="171" width="48" height="48" fill="white"/>
+   <rect x="60" y="170" width="50" height="50" fill="black"/>
+   <rect class="x1y1" x="61" y="171" width="48" height="48" fill="white"/>
+   <rect x="115" y="170" width="50" height="50" fill="black"/>
+   <rect class="x2y1" x="116" y="171" width="48" height="48" fill="white"/>
+   <rect x="170" y="170" width="50" height="50" fill="black"/>
+   <rect class="x3y1" x="171" y="171" width="48" height="48" fill="white"/>
+   <rect x="225" y="170" width="50" height="50" fill="black"/>
+   <rect class="x4y1" x="226" y="171" width="48" height="48" fill="white"/>
+   <rect x="5" y="225" width="50" height="50" fill="black"/>
+   <rect class="x0y0" x="6" y="226" width="48" height="48" fill="white"/>
+   <rect x="60" y="225" width="50" height="50" fill="black"/>
+   <rect class="x1y0" x="61" y="226" width="48" height="48" fill="white"/>
+   <rect x="115" y="225" width="50" height="50" fill="black"/>
+   <rect class="x2y0" x="116" y="226" width="48" height="48" fill="white"/>
+   <rect x="170" y="225" width="50" height="50" fill="black"/>
+   <rect class="x3y0" x="171" y="226" width="48" height="48" fill="white"/>
+   <rect x="225" y="225" width="50" height="50" fill="black"/>
+   <rect class="x4y0" x="226" y="226" width="48" height="48" fill="white"/>
+</svg>
