@@ -15,3 +15,8 @@ export interface ResultObject {
   numberOfMethods: number;
   allPathsToEnd: Array<Point[]>;
 }
+
+export interface Line {
+  start: Point;
+  end: Point;
+}
