@@ -1,6 +1,6 @@
 import { Point, ResultObject } from './interfaces.js';
 import { moveNextPosition } from './path-functions.js';
-import { multipleTwoDArrays, testLine } from './functions/create-2d-array.js';
+import { multipleTwoDArrays } from './functions/create-2d-array.js';
 import { writeFile } from './functions/read-file-and-write.js';
 
 function startProgramm(): void {
@@ -34,9 +34,8 @@ function startProgramm(): void {
     resultObject
   );
   console.log(numberOfMethods);
-  const testLineCoords = testLine(allPathsToEnd[0]);
-  // const allVisualPathsToEndAsSvg = multipleTwoDArrays(allPathsToEnd);
-  // writeFile('svgs.html', allVisualPathsToEndAsSvg);
+  const allVisualPathsToEndAsSvg = multipleTwoDArrays(allPathsToEnd);
+  writeFile('svgs.html', allVisualPathsToEndAsSvg);
 }
 
 startProgramm();

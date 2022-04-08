@@ -38,6 +38,12 @@ function createAndAssignSvg(arrayOfCoords: Point[]) {
     const element = $(`.x${x}y${y}`);
     element.attr('fill', ColorSteps[index]);
   });
+  const lineCoords = createSvgLineCoords(arrayOfCoords);
+  lineCoords.forEach((line) => {
+    // <line x1="30" y1="10" x2="100" y2="200" stroke="black" />;
+    const lineSvg = `<line x1=${line.start.x} y1=${line.start.y} x2=${line.end.x} y2=${line.end.y} stroke="white" stroke-width=5 />`;
+    $('svg').append(lineSvg);
+  });
   const svgText = $('svg').parent().html();
   return svgText;
 }
@@ -53,7 +59,7 @@ function createLineCoords(arrayOfCoords: Point[]) {
   return lineCoordsArray;
 }
 
-export function testLine(arrayOfCoords: Point[]) {
+function createSvgLineCoords(arrayOfCoords: Point[]) {
   const svgData = readFile('grid-module.svg');
   const $ = load(svgData);
   const lineCoordsArray = createLineCoords(arrayOfCoords);
@@ -66,13 +72,10 @@ export function testLine(arrayOfCoords: Point[]) {
     const newLine: Line = { start: startBox, end: endBox };
     return newLine;
   });
-  const FilteredSvgLineCoordsArray = svgLineCoordsArray.filter(
+  const filteredSvgLineCoordsArray = svgLineCoordsArray.filter(
     (svg): svg is Line => !!svg
   );
-  /*   // <line x1="30" y1="10" x2="100" y2="200" stroke="black" />;
-  const lineCoords = lineCoordsArray[index];
-  const elementX = element.attr('x1');
- */
+  return filteredSvgLineCoordsArray;
 }
 
 function getMiddleOfBox(box: Point, $: CheerioAPI): Point | undefined {
