@@ -39,3 +39,5 @@ function startProgramm(): void {
 }
 
 startProgramm();
+// janidator69;
+// dggggsss;
