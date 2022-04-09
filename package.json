@@ -1,5 +1,5 @@
 {
-  "name": "mathematik-pacmac-beispiel",
+  "name": "mathematik-pacman-beispiel",
   "version": "1.0.0",
   "description": "calculate all possibilities to get to destination pacman maximatik",
   "main": "index.js",
@@ -19,7 +19,7 @@
     "calculate",
     "all",
     "possibilities",
-    "pacmac",
+    "pacman",
     "maximatik"
   ],
   "author": "scrythe",
