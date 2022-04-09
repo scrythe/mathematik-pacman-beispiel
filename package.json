@@ -31,5 +31,16 @@
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.10"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scrythe/mathematik-pacman-beispiel.git"
+  },
+  "bugs": {
+    "url": "https://github.com/scrythe/mathematik-pacman-beispiel/issues"
+  },
+  "homepage": "https://github.com/scrythe/mathematik-pacman-beispiel#readme"
 }
